@@ -24,8 +24,13 @@ print(df_movies)
 print(df_shows)
 
 #fill the missing discrete values with mean
+
+
+
 imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
-imputer.fit(df_movies[:,8:12])
-df_movies[:,8:12] = imputer.transform(df_movies[:,8:12])
-print(df_movies)
+imputer.fit(df_shows[:,8:12])
+df_shows[:,8:12] = imputer.transform(df_shows[:,8:12])
+print(df_shows)
+
+
 
