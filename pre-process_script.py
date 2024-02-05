@@ -1,6 +1,7 @@
 import numpy as np 
 import pandas as pd 
 import matplotlib.pyplot as pt 
+from sklearn.impute import SimpleImputer
 
 #navigate file path & read dataset
 file_path = ("E:\\Analytics\\data projects\\Netflix-Data-Project\\titles.csv")
@@ -21,4 +22,10 @@ df_movies = new_df[mask_1]
 df_shows = new_df[mask_2]
 print(df_movies)
 print(df_shows)
+
+#fill the missing discrete values with mean
+imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
+imputer.fit(df_movies[:,8:12])
+df_movies[:,8:12] = imputer.transform(df_movies[:,8:12])
+print(df_movies)
 
