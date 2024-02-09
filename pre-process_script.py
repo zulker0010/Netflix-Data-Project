@@ -23,13 +23,11 @@ df_shows = new_df[mask_2]
 print(df_movies)
 print(df_shows)
 
-#fill the missing discrete values with mean
-imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
-imputer.fit(df_movies[:,8:12])
-df_movies[:,8:12] = imputer.transform(df_movies[:,8:12])
-print(df_movies)
+#export new dataframes into an excel file
+df_movies.to_excel('df_movies.xlsx', index = False)
+df_shows.to_excel('df_shows.xlsx', index = False)
 
-
+#fill the missing values in column 8:11
 
 
 
