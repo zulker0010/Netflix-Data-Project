@@ -23,12 +23,11 @@ df_shows = new_df[mask_2]
 print(df_movies)
 print(df_shows)
 
+#fill the missing values in column 8:11
+fill_columns = ['imdb_score','imdb_votes','tmdb_popularity','tmdb_score']
+df_movies[fill_columns] = df_movies[fill_columns].fillna(df_movies[fill_columns].mean())
+df_shows[fill_columns] = df_shows[fill_columns].fillna(df_shows[fill_columns].mean())
+
 #export new dataframes into an excel file
 df_movies.to_excel('df_movies.xlsx', index = False)
 df_shows.to_excel('df_shows.xlsx', index = False)
-
-#fill the missing values in column 8:11
-
-
-
-
