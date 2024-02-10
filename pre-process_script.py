@@ -1,7 +1,9 @@
 import numpy as np 
 import pandas as pd 
 import matplotlib.pyplot as pt 
-from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import make_column_transformer 
+from seaborn import load_dataset
 
 #navigate file path & read dataset
 file_path = ("E:\\Analytics\\data projects\\Netflix-Data-Project\\titles.csv")
@@ -28,6 +30,11 @@ fill_columns = ['imdb_score','imdb_votes','tmdb_popularity','tmdb_score']
 df_movies[fill_columns] = df_movies[fill_columns].fillna(df_movies[fill_columns].mean())
 df_shows[fill_columns] = df_shows[fill_columns].fillna(df_shows[fill_columns].mean())
 
+#drop 'seasons' column for the df_movies dataframe
+df_movies.drop(columns = df_movies.columns[6], inplace = True)
+df_movies0 = df_movies.drop(columns = df_movies.columns[6])
+
 #export new dataframes into an excel file
 df_movies.to_excel('df_movies.xlsx', index = False)
 df_shows.to_excel('df_shows.xlsx', index = False)
+
