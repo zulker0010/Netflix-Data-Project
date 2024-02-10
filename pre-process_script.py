@@ -38,3 +38,14 @@ df_movies0 = df_movies.drop(columns = df_movies.columns[6])
 df_movies.to_excel('df_movies.xlsx', index = False)
 df_shows.to_excel('df_shows.xlsx', index = False)
 
+#one_hot_encoding on the new_df
+transformer = make_column_transformer(
+ (OneHotEncoder(), [0]),
+  remainder = 'passthrough'
+ )
+transformed = transformer.fit_transform(new_df)
+new_df = transformed
+print(new_df)
+
+DF = pd.DataFrame(new_df)
+DF.to_excel('new_df.xlsx', index = False)
